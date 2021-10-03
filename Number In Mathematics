@@ -1,0 +1,127 @@
+HAGOBEN NUMBERS
+
+#include
+#include
+
+using namespace std;
+int hogbennumber( int a)
+{
+int p = ( pow (a, 2) - a + 1 );
+return p;
+}
+int main ( )
+{
+int n=10;
+cout << "Desired hogben number is : ";
+
+hogbennumber( n );
+
+return 0;
+}
+
+PANARITHIMIC NUMBERS
+
+
+#include<iostream>
+using namespace std;
+int s[5000];
+int getNoOfPracticalNumbers(int f,int t)
+  {
+      int count=0,l=0,m,nl,c;
+      int factor[5000],tfactor[5000],temp;
+      for (int num=f;num<=t;num++)
+     {
+       m=0;
+         for(int i=0;i<5000;i++)
+		 {
+
+         factor[i]=0;
+        tfactor[i]=0;
+        }
+        for(int i=1;i<=num/2;i++)
+        { 
+        if(num%i == 0)
+        {
+        factor[c]=i;
+        nl++;
+        c++;
+        }
+         }
+
+    for(int i=num-1;i>0;i--)
+        {
+        temp=i;
+        for (int j=nl-1;j>=0;j--)
+            
+            if(temp>0)
+            temp-=factor[j];
+            if(temp<0)
+            temp+=factor[j];
+            if(temp==0)
+             break;
+            }
+            if(temp!=0)
+            {
+            count--;
+            break;
+            }            
+         m++;
+        }
+        if(m==num-1)
+{
+        s[l]=num;
+         l++;
+}
+        count++;
+    }
+    return(count);
+}//function to find the number of practical numbers
+int* getPracticalNumbers(int f,int c)
+{
+
+int *p;
+p=&s[0];
+
+return(p);
+
+}
+  //function to get the practical numbers
+ 
+ int main()
+
+{
+        int from = 40, to = 50;
+        int no = getNoOfPracticalNumbers(from, to); 
+        int* output = getPracticalNumbers(from, to);
+        printf("NoOfPracticalNumbers : %d\n",no);
+        printf("PracticalNumbers : ");
+        if (output != NULL)
+        {
+            for (int i=0;i<no;i++)
+                cout <<  output[i]<<" ";
+        }
+        else
+            cout << output<<" ";
+    }   
+
+BEAUTY NUMBERS
+
+#include using namespace std; 
+bool beautycheck (float a, float b) //function to check whether the object tends to be beautiful or not 
+{ 
+float s =(a + b); 
+if((s / a) == (a / b)) 
+{ if((a / b) == 1.618) return 1; 
+} 
+else
+return 0; 
+}
+int main() 
+{
+float a=1.00,b=0.618; 
+if(beautycheck(a,b)) 
+cout << "Yes" ;
+else
+cout << "No" ;
+
+} 
