@@ -1,0 +1,49 @@
+/*
+Count the number of Sub stirng with K pairwise distinct characters
+*/
+#include<bits/stdc++.h>
+using namespace std;
+int no_of_substring( string s, int N )
+{
+ 
+        int fre[26]; //to strore the occurrence of each character present in the substring
+       
+        int str_len;    
+  
+        str_len = (int)s.length(); 
+  
+        int count = 0;
+  
+        for(int i = 0 ; i < str_len ; i++)    // moving for the substring starting from i 
+        {
+            memset(fre, 0, sizeof(fre)); //setting all values at each index to zero
+            int max_index = 0;
+            int dist = 0;  //denote the number of unique characters
+            for(int j = i ; j < str_len ; j++)  // moving the substring ending at j
+            {
+                int x = s[j] - 'a';  //calculating the index of character in frequency array
+               
+                if(fre[x] == 0)
+                    dist++;
+                
+                fre[x]++;
+                
+                max_index = max(max_index, fre[x]);
+              
+                if(dist >= N & ( (max_index * dist) == (j - i + 1) )) //checking for the condition
+                    count++;
+            }
+          
+        }
+ return  count;
+}
+
+int main()
+{
+  string s = "abasa";
+  int N = 2;
+  
+  cout<<no_of_substring( s, N );
+   
+  return 0; 
+}
